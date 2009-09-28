@@ -2,7 +2,7 @@
 
 Name:		pycdio
 Version:	0.15
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
@@ -13,6 +13,7 @@ Source0:	ftp://ftp.gnu.org/pub/gnu/libcdio/%{name}-%{version}.tar.gz
 # Remove shebangs in the modules
 # a patch was emailed and accepted on libcdio-pycdio-devel@gnu.org
 Patch0:		pycdio-remove-shebangs.patch
+Patch1:		pycdio-remove-get-devices-compensation.patch
 
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:	python-devel,python-setuptools,libcdio-devel,swig
@@ -26,6 +27,7 @@ device-dependent properties of a CD-ROM can use this library.
 %prep
 %setup -q
 %patch0
+%patch1
 
 %build
 %{__python} setup.py build
@@ -44,6 +46,8 @@ rm -rf %{buildroot}
 %doc README.txt
 
 %changelog
+* Mon Sep 28 2009 Jay Greguske <jgregusk@redhat.com> - 0.15-4
+- Off-by-one compensation in get_devices_* not needed anymore
 * Tue Jul 28 2009 Jay Greguske <jgregusk@redhat.com> - 0.15-3
 - Added a patch to remove unnecessary shebangs
 * Mon Jul 27 2009 Jay Greguske <jgregusk@redhat.com> - 0.15-2
