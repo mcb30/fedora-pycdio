@@ -2,7 +2,7 @@
 
 Name:		pycdio
 Version:	0.16
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
@@ -39,6 +39,8 @@ rm -rf %{buildroot}
 %doc README.txt
 
 %changelog
+* Fri Jan 22 2010 Adrian Reber <adrian@lisas.de> - 0.16-2
+- Rebuilt for libcdio-0.82
 * Wed Oct 28 2009 Jay Greguske <jgregusk@redhat.com> - 0.16-1
 - Updated to version 0.16
 * Mon Sep 28 2009 Jay Greguske <jgregusk@redhat.com> - 0.15-4
