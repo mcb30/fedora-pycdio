@@ -2,7 +2,7 @@
 
 Name:		pycdio
 Version:	0.16
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %doc README.txt
 
 %changelog
+* Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 0.16-3
+- Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
+
 * Fri Jan 22 2010 Adrian Reber <adrian@lisas.de> - 0.16-2
 - Rebuilt for libcdio-0.82
 * Wed Oct 28 2009 Jay Greguske <jgregusk@redhat.com> - 0.16-1
