@@ -2,13 +2,13 @@
 
 Name:		pycdio
 Version:	0.17
-Release:	0%{?dist}
+Release:	1%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
 License:	GPLv3+
 URL:		http://www.gnu.org/software/libcdio/
-Source0:	ftp://ftp.gnu.org/pub/gnu/libcdio/%{name}-%{version}.tar.gz
+Source0:	http://pypi.python.org/packages/source/p/pycdio/pycdio-0.17.tar.gz
 
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:	python-devel,python-setuptools,libcdio-devel,swig
@@ -39,15 +39,14 @@ rm -rf %{buildroot}
 %doc README.txt
 
 %changelog
+* Fri Apr 22 2011 Jay Greguske <jgregusk@redhat.com> 0.17-1
+- Fix source url
 * Fri Apr 22 2011 Jay Greguske <jgregusk@redhat.com> 0.17-0
 - Update to 0.17
-
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.16-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
-
 * Wed Jul 21 2010 David Malcolm <dmalcolm@redhat.com> - 0.16-3
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
-
 * Fri Jan 22 2010 Adrian Reber <adrian@lisas.de> - 0.16-2
 - Rebuilt for libcdio-0.82
 * Wed Oct 28 2009 Jay Greguske <jgregusk@redhat.com> - 0.16-1
