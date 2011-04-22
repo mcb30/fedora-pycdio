@@ -1,8 +1,8 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:		pycdio
-Version:	0.16
-Release:	4%{?dist}
+Version:	0.17
+Release:	0%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %doc README.txt
 
 %changelog
+* Fri Apr 22 2011 Jay Greguske <jgregusk@redhat.com> 0.17-0
+- Update to 0.17
+
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.16-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
