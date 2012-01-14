@@ -2,7 +2,7 @@
 
 Name:		pycdio
 Version:	0.17
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %doc README.txt
 
 %changelog
+* Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.17-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Sun Nov 20 2011 Adrian Reber <adrian@lisas.de> - 0.17-2
 - Rebuilt for libcdio-0.83
 * Fri Apr 22 2011 Jay Greguske <jgregusk@redhat.com> 0.17-1
