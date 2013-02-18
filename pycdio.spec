@@ -1,14 +1,14 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:		pycdio
-Version:	0.18
-Release:	2%{?dist}
+Version:	0.19
+Release:	1%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
 License:	GPLv3+
 URL:		http://www.gnu.org/software/libcdio/
-Source0:	http://pypi.python.org/packages/source/p/pycdio/pycdio-0.18.tar.gz
+Source0:	http://pypi.python.org/packages/source/p/pycdio/pycdio-0.19.tar.gz
 
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:	python-devel,python-setuptools,libcdio-devel,swig
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %doc README.txt
 
 %changelog
+* Mon Feb 18 2013 Adrian Reber <adrian@lisas.de> - 0.19-1
+- Updated to 0.19 which actually works with libcdio-0.90
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.18-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
