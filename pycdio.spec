@@ -2,7 +2,7 @@
 
 Name:		pycdio
 Version:	0.19
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 %doc README.txt
 
 %changelog
+* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.19-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Mon Feb 18 2013 Adrian Reber <adrian@lisas.de> - 0.19-1
 - Updated to 0.19 which actually works with libcdio-0.90
 
