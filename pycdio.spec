@@ -1,18 +1,18 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:		pycdio
-Version:	0.19
-Release:	7%{?dist}
+Version:	0.20
+Release:	1%{?dist}
 Summary:	A Python interface to the CD Input and Control library
 
 Group:		Development/Libraries
 License:	GPLv3+
 URL:		http://www.gnu.org/software/libcdio/
-Source0:	http://pypi.python.org/packages/source/p/pycdio/pycdio-0.19.tar.gz
+Source0:	ftp://ftp.gnu.org/pub/gnu/libcdio/pycdio-%{version}.tar.gz
 
-BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildRequires:	python-devel,python-setuptools,libcdio-devel,swig
 Requires:	python
+Provides:	python2-%{name}
 
 %description
 The pycdio (and libcdio) libraries encapsulate CD-ROM reading and
@@ -23,22 +23,24 @@ device-dependent properties of a CD-ROM can use this library.
 %setup -q
 
 %build
-%{__python} setup.py build
+%py2_build
 
 %install
 rm -rf %{buildroot}
-%{__python} setup.py install --skip-build --root %{buildroot}
+%py2_install
 chmod 755 %{buildroot}/%{python_sitearch}/*.so
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
+%{!?_licensedir:%global license %doc}
 %{python_sitearch}/*
 %doc README.txt
+%license COPYING
 
 %changelog
+* Tue Nov  3 2015 Adam Williamson <awilliam@redhat.com> - 0.20-1
+- update to latest upstream (fixes #1269003)
+- clean and modernize spec a little (note: no longer EPEL5 compatible)
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.19-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
