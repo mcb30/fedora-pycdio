@@ -1,42 +1,70 @@
-%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%global srcname pycdio
+%global sum A Python interface to the CD Input and Control library
 
-Name:		pycdio
+Name:		%{srcname}
 Version:	0.20
-Release:	6%{?dist}
-Summary:	A Python interface to the CD Input and Control library
+Release:	7%{?dist}
+Summary:	%{sum}
 
 Group:		Development/Libraries
 License:	GPLv3+
 URL:		http://www.gnu.org/software/libcdio/
-Source0:	ftp://ftp.gnu.org/pub/gnu/libcdio/pycdio-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/pub/gnu/libcdio/%{srcname}-%{version}.tar.gz
+Patch0:		%{srcname}-swig-python3.patch
 
-BuildRequires:	python-devel,python-setuptools,libcdio-devel,swig
-Requires:	python
-Provides:	python2-%{name}
+BuildRequires:	python2-devel python3-devel libcdio-devel swig
 
 %description
 The pycdio (and libcdio) libraries encapsulate CD-ROM reading and
 control. Python programs wishing to be oblivious of the OS- and
 device-dependent properties of a CD-ROM can use this library.
 
+%package -n python2-%{srcname}
+Summary:	%{sum}
+Provides:	%{srcname} = %{version}
+Obsoletes:	%{srcname} < %{version}
+%{?python_provide:%python_provide python2-%{srcname}}
+
+%description -n python2-%{srcname}
+The pycdio (and libcdio) libraries encapsulate CD-ROM reading and
+control. Python programs wishing to be oblivious of the OS- and
+device-dependent properties of a CD-ROM can use this library.
+
+%package -n python3-%{srcname}
+Summary:	%{sum}
+%{?python_provide:%python_provide python3-%{srcname}}
+
+%description -n python3-%{srcname}
+The pycdio (and libcdio) libraries encapsulate CD-ROM reading and
+control. Python programs wishing to be oblivious of the OS- and
+device-dependent properties of a CD-ROM can use this library.
+
 %prep
-%setup -q
+%autosetup -n %{srcname}-%{version} -p 1
 
 %build
 %py2_build
+%py3_build
 
 %install
-rm -rf %{buildroot}
 %py2_install
-chmod 755 %{buildroot}/%{python_sitearch}/*.so
+%py3_install
 
-%files
-%{!?_licensedir:%global license %doc}
-%{python_sitearch}/*
-%doc README.txt
+%files -n python2-%{srcname}
 %license COPYING
+%doc README.txt
+%{python2_sitearch}/*
+
+%files -n python3-%{srcname}
+%license COPYING
+%doc README.txt
+%{python3_sitearch}/*
 
 %changelog
+* Mon Jul 31 2017 Michael Brown <mbrown@fensystems.co.uk> - 0.20-7
+- Add support for Python 3
+- Update spec to conform to current Python packaging guidelines
+
 * Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.20-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
